@@ -522,7 +522,7 @@ public class VisitorCitizen extends AbstractEntityCitizen
      * @return If citizen should interact or not.
      */
     @Override
-    public ActionResultType func_233661_c_(final PlayerEntity player, @NotNull final Hand hand)
+    public ActionResultType processInteract(final PlayerEntity player, @NotNull final Hand hand)
     {
         final IColonyView iColonyView = IColonyManager.getInstance().getColonyView(citizenColonyHandler.getColonyId(), player.world.getDimensionKey());
         if (iColonyView != null && !iColonyView.getPermissions().hasPermission(player, Action.ACCESS_HUTS))
@@ -532,7 +532,7 @@ public class VisitorCitizen extends AbstractEntityCitizen
 
         if (!ItemStackUtils.isEmpty(player.getHeldItem(hand)) && player.getHeldItem(hand).getItem() instanceof NameTagItem)
         {
-            return super.func_233661_c_(player, hand);
+            return super.processInteract(player, hand);
         }
 
         if (CompatibilityUtils.getWorldFromCitizen(this).isRemote)
