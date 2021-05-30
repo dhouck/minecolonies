@@ -180,7 +180,9 @@ public final class ModBuildingsInitializer
                                 .setBuildingProducer(BuildingFarmer::new)
                                 .setBuildingViewProducer(() -> BuildingFarmer.View::new)
                                 .setRegistryName(new ResourceLocation(Constants.MOD_ID, ModBuildings.FARMER_ID))
+                                .addBuildingModuleProducer(MinimumStockModule::new, MinimumStockModuleView::new)
                                 .addBuildingModuleViewProducer(CrafterTaskModuleView::new)
+
                                 .addBuildingModuleProducer(() -> new SettingsModule().with(BuildingFarmer.FERTILIZE, new BoolSetting(true)), SettingsModuleView::new)
                                 .createBuildingEntry();
 
@@ -226,7 +228,9 @@ public final class ModBuildingsInitializer
                                     .setRegistryName(new ResourceLocation(Constants.MOD_ID, ModBuildings.LUMBERJACK_ID))
                                     .addBuildingModuleProducer(() -> new ItemListModule(SAPLINGS_LIST), () -> new ItemListModuleView(SAPLINGS_LIST, COM_MINECOLONIES_REQUESTS_SAPLINGS, true,
                                       (buildingView) -> IColonyManager.getInstance().getCompatibilityManager().getCopyOfSaplings()))
+                                    .addBuildingModuleProducer(MinimumStockModule::new, MinimumStockModuleView::new)
                                     .addBuildingModuleViewProducer(CrafterTaskModuleView::new)
+
                                     .addBuildingModuleProducer(() -> new SettingsModule().with(BuildingLumberjack.REPLANT, new BoolSetting(true)).with(BuildingLumberjack.RESTRICT, new BoolSetting(false)), SettingsModuleView::new)
                                     .addBuildingModuleViewProducer(() -> new ToolModuleView(ModItems.scepterLumberjack))
                                     .createBuildingEntry();
